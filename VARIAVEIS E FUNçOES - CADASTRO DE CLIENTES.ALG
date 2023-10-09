@@ -5,95 +5,88 @@ Algoritmo "variaveis e funçoes - cadastro de clientes"
 Var
  opcaomenu: caracter
  clientes: vetor[1..5] de caracter
-
+ 
  procedimento mostrarmenu()
- inicio
-              escreval("1 - Cadastrar")
+              escreval("1 - cadastrar")
               escreval("2 - Pesquisar")
               escreval("3 - Excluir")
               leia (opcaomenu)
  fimprocedimento
-
- procedimento indicecadastrar()
+ 
+ procedimento cadastrar()
  var
  i:inteiro
-
+ 
  inicio
 
 para i de 1 ate 5 faca
-se clientes[i] = "" entao
+se cliente[i] = "" entao
     escreval ("Informe o nome do cliente")
     leia (clientes[i])
 fimse
 fimpara
 
-
-fimprocedimento
-
-
-procedimento indicepesquisar()
-var
-i, indicesucesso: inteiro
-nomepesquisar: caracter
-
-
+       
+ fimprocedimento
+ 
+ 
+ procedimento pesquisar()
+ var
+ i: caracter
+ nomeapesquisar:caracter
+ sucesso:inteiro
+ 
  inicio
- escreval ("Informe o nome do cliente a pesquisar")
-    leia (nomepesquisar)
-    indicesucesso <- -1
-    
- para i de 1 ate 5 faca
-    se clientes[i] = nomepesquisar entao
-       indicesucesso <- i
-       interrompa
-    fimse
-
-se indicesucesso < 0 entao
-   escreval("cliente não encontrado")
-senao
-     escreval("cliente encontrado na posicao ", indicesucesso)
+     escreval ("Informe o nome do cliente")
+    leia (nomeapesquisar)
+    sucesso <- -1
+    para i de 1 ate 5 faca
+    se cliente[i] = nomeapesquisar entao
+    sucesso <- i
+    interrompa
 fimse
 
-fimprocedimento
+se sucesso = -1 entao
+   escreval("cliente não encontrado")
+senao
+     escreval("cliente encontrado na posicao, ", sucesso)
+fimse
 
-
- procedimento indiceexcluir()
+fimpara
+ fimprocedimento
  
+ procedimento escluir()
  var
  exclusao: inteiro
- 
  inicio
  escreval("informe o indice que deseja exluir")
  leia(exclusao)
- 
- se (exclusao > 5) ou (exclusao < 1) entao
+ se (exlusao >5) ou (exclusao <1)entao
   escreval ("indiceinvalido")
-
   senao
-       clientes[exclusao] <- ""
-
+       clientes[exlusao]<-""
+       
   fimse
-
-fimprocedimento
-
-
+  
+  fimprocedimento
+ 
+ 
 
 
 Inicio
-repita
+      repita
             mostrarmenu()
             escolha opcaomenu
-                    caso "1"
-                           indicecadastrar()
-                    caso "2"
-                           indicepesquisar()
-                    caso "3"
-                           indiceexcluir()
-                           
-                    outrocaso
-                           escreval ("opçao inválida")
-
+            caso "1"
+                 cadastrar()
+            caso"2"
+                 pesquisar()
+            caso"3"
+                 excluir()
+            outrocaso
+                     escreval ("opçao inválida")
+                     
             fimescolha
-ate opcaomenu = "4"
+            ate opcaomenu = "4"
 
 Fimalgoritmo
